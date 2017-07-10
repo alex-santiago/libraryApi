@@ -1,0 +1,49 @@
+{
+	"_type": "library",
+	"id": "apiRoot",
+	"href": "/library",
+	"links": [
+		{
+			"rel": "collection/authors",
+			"href": "/library/authors"
+		},
+		{
+			"rel": "collection/users",
+			"href": "/library/users"
+		},
+		{
+			"rel": "collection/publishers",
+			"href": "/library/publishers"
+		},
+		{
+			"rel": "collection/books",
+			"href": "/library/books"
+		},
+		{
+			"rel": "collection/bookcopies",
+			"href": "/library/bookcopies"
+		},
+		{
+			"rel": "collection/borrows",
+			"href": "/library/borrows"
+		}
+		{
+			"rel": "collection/authentications",
+			"href": "/library/authentications"
+		}
+	],
+
+	"operations": [
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library",
+			"responses": [
+				{
+					"200": "List each resource and its operations"
+				}
+			]
+		}
+	]
+
+}

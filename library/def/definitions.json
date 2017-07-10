@@ -1,0 +1,164 @@
+{
+	"definitions": [
+		{
+			"type": "object",
+			"id": "publisher",
+			"required": [
+					"name"
+			],
+			"properties": [
+				{
+					"publisherId": "integer"
+				},
+				{
+					"name": "string",
+					"example": "Lots of Books publishing"
+				}
+			]
+		},
+		{
+			"type": "object",
+			"id": "author",
+			"required": [
+					"name"
+			],
+			"properties": [
+				{
+					"authorId": "integer"
+				},
+				{
+					"name": "string",
+					"example": "Sir Arthur Conan Doyle"
+				}
+			]
+		},
+		{
+			"type": "object",
+			"id": "user",
+			"required": [
+					"name"
+			],
+			"properties": [
+				{
+					"userId": "integer"
+				},
+				{
+					"name": "string",
+					"example": "Alexandre Santiago da Silva"
+				},
+				{
+					"genre": ["Male","Female"]
+				},
+				{
+					"address": "string"
+				},
+				{
+					"loans": "integer"
+				}
+			]
+		},
+		{
+			"type": "object",
+			"id": "book",
+			"required": [
+					"title",
+					"authorId",
+					"ISBN",
+					"edition",
+					"genre",
+					"publisherId",
+					"datePublished"
+			],
+			"properties": [
+				{
+					"bookId": "integer"
+				},
+				{
+					"title": "string",
+					"example": "A Study in Scarlet"
+				},
+				{
+					"authorId": "integer"
+				},
+				{
+					"subject": "string",
+					"example": "A Study in Scarlet is an 1887 detective novel by British author Arthur Conan Doyle, that marks the first appearance of Sherlock Holmes and Dr. Watson."
+				},
+				{
+					"ISBN": "integer",
+					"example": "9780755334476"
+				},
+				{
+					"edition": "string",
+					"example": ["e-book", "hardcover", "paperback"]
+				},
+				{
+					"numberCopies": "integer"
+				}
+				{
+					"genre": "string",
+					"example": ["fiction", "biography", "novel"]
+				},
+				{
+					"publisherId": "integer"
+				},
+				{
+					"country": "string",
+					"example": "UK"
+				},
+				{
+					"datePublished": "date",
+					"example": "2007-04-01"
+				}
+			]
+		},
+		{
+			"type": "object",
+			"id": "bookCopie",
+			"required": [
+					"location"
+			],
+			"properties": [
+				{
+					"authorId": "integer"
+				},
+				{
+					"location": "string",
+					"example": "NF-Business (3rd floor, row 2-3)"
+				}
+			]
+		},
+		{
+			"type": "object",
+			"id": "borrow",
+			"required": [
+					"loandate",
+					"userId",
+					"bookcopyId"
+			],
+			"properties": [
+				{
+					"bookcopyId": "integer"
+				},
+				{
+					"userId": "integer"
+				},
+				{
+					"loanDate": "date",
+					"example": "2007-04-01"
+				},				
+				{
+					"dueDate": "date",
+					"example": "2007-04-01"
+				},				
+				{
+					"returnDate": "date",
+					"example": "2007-04-01"
+				},				
+				{
+					"numberRenews": "integer"
+				}
+			]
+		}
+	]
+}

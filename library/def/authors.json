@@ -1,0 +1,163 @@
+{
+	"_type": "authors",
+	"id": "authors",
+	"href": "/library/authors",
+	"links": [
+		{
+			"rel": "collection/authors",
+			"href": "/library/authors"
+		}
+	],
+
+	"operations": [
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/authors",
+			"description": "List all the authors",
+			"responses": [
+				{
+					"code": "200",
+					"description": "Returns all authors in descending order",
+					"return": "Author",
+					"link": "/library/definitions/author"
+				},
+				{
+					"code": "404",
+					"description": "No authors found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/authors/{authorId}",
+			"description": "List information of a author",
+			"parameters": [
+				{
+					"name": "authorId",
+					"description": "Id of a author to list",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a author",
+					"return": "Author",
+					"link": "/library/definitions/author"
+				},
+				{
+					"code": "404",
+					"description": "Authors not found"
+				}
+			]
+		},
+		{
+			"rel": "POST",
+			"method": "POST",
+			"href": "/library/authors",
+			"description": "Add a new author to the library",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "author",
+					"description": "Author object to be added to the library",
+					"required": "true",
+					"type": "object",
+					"link": "/library/definitions/author"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Author added",
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "PUT",
+			"method": "PUT",
+			"href": "/library/authors/{authorId}",
+			"description": "Updates information of a author",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "authorId",
+					"description": "Id of a author to update",
+					"required": "true",
+					"type": "integer"
+				},
+				{
+					"name": "authorName",
+					"description": "Name to update for a author",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Author updated",
+				},
+				{
+					"code": "404",
+					"description": "Author not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "DELETE",
+			"method": "DELETE",
+			"href": "/library/authors/{authorId}",
+			"description": "Updates information of a author",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "authorId",
+					"description": "Id of a author to delete",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Author deleted",
+				},
+				{
+					"code": "404",
+					"description": "Author not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		}
+	]
+}

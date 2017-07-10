@@ -1,0 +1,177 @@
+{
+	"_type": "publishers",
+	"id": "publishers",
+	"href": "/library/publishers",
+	"links": [
+		{
+			"rel": "collection/authors",
+			"href": "/library/authors"
+		}
+	],
+
+	"operations": [
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/publishers",
+			"description": "List all the publishers",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Returns all publishers in descending order",
+					"return": "publisher",
+					"link": "/library/definitions/publisher"
+				},
+				{
+					"code": "404",
+					"description": "No publishers found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/publishers/{publisherId}",
+			"description": "List information of a publisher",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "publisherId",
+					"description": "Id of a publisher to list",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a publisher",
+					"return": "publisher",
+					"link": "/library/definitions/publisher"
+				},
+				{
+					"code": "404",
+					"description": "Publishers not found"
+				}
+			]
+		},
+		{
+			"rel": "POST",
+			"method": "POST",
+			"href": "/library/publishers",
+			"description": "Add a new publisher to the library",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "publisher",
+					"description": "Publisher object to be added to the library",
+					"required": "true",
+					"type": "object",
+					"link": "/library/definitions/publisher"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Publisher added",
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "PUT",
+			"method": "PUT",
+			"href": "/library/publishers/{publisherId}",
+			"description": "Updates information of a publisher",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "publisherId",
+					"description": "Id of a publisher to update",
+					"required": "true",
+					"type": "integer"
+				},
+				{
+					"name": "publisherName",
+					"description": "Name to update for a publisher",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Publisher updated",
+				},
+				{
+					"code": "404",
+					"description": "Publisher not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "DELETE",
+			"method": "DELETE",
+			"href": "/library/publishers/{publisherId}",
+			"description": "Updates information of a publisher",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "publisherId",
+					"description": "Id of a publisher to delete",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Publisher deleted",
+				},
+				{
+					"code": "404",
+					"description": "Publisher not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		}
+	]
+}

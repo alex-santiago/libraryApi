@@ -1,0 +1,294 @@
+{
+	"_type": "users",
+	"id": "users",
+	"href": "/library/users",
+	"links": [
+		{
+			"rel": "collection/users",
+			"href": "/library/users"
+		}
+	],
+
+	"operations": [
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/users",
+			"description": "List all the users",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Returns all users in descending order",
+					"return": "user",
+					"link": "/library/definitions/user"
+				},
+				{
+					"code": "404",
+					"description": "No users found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/users/{userId}",
+			"description": "List information of a user",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "userId",
+					"description": "Id of a user to list",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a user",
+					"return": "user",
+					"link": "/library/definitions/user"
+				},
+				{
+					"code": "404",
+					"description": "Users not found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/users/listUserLoans/{userId}",
+			"description": "List the number of loans a user currently have",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "userId",
+					"description": "Id of a user to list loans",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a user",
+					"return": "integer"
+				},
+				{
+					"code": "404",
+					"description": "Users not found"
+				}
+			]
+		},
+		{
+			"rel": "POST",
+			"method": "POST",
+			"href": "/library/users",
+			"description": "Add a new user to the library",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "user",
+					"description": "User object to be added to the library",
+					"required": "true",
+					"type": "object",
+					"link": "/library/definitions/user"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "User added",
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "PUT",
+			"method": "PUT",
+			"href": "/library/users/{userId}",
+			"description": "Updates information of a user",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "userId",
+					"description": "Id of a user to update",
+					"required": "true",
+					"type": "integer"
+				},
+				{
+					"name": "userName",
+					"description": "Name to update for a user",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "User updated",
+				},
+				{
+					"code": "404",
+					"description": "User not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "DELETE",
+			"method": "DELETE",
+			"href": "/library/users/{userId}",
+			"description": "Updates information of a user",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "userId",
+					"description": "Id of a user to delete",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "User deleted",
+				},
+				{
+					"code": "404",
+					"description": "User not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/users/login",
+			"description": "Logs user into the system",
+			"parameters": [
+				{
+					"name": "userId",
+					"description": "Id of a user to login",
+					"required": "true",
+					"type": "integer"
+				},
+				{
+					"name": "userPsw",
+					"description": "User password",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a valid token",
+					"return": "string",
+				},
+				{
+					"code": "404",
+					"description": "Users not found"
+				},
+				{
+					"code": "403",
+					"description": "Invalid login/password"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/users/authorizeUser",
+			"description": "Logs user into the system",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "userId",
+					"description": "Id of a user to login",
+					"required": "true",
+					"type": "integer"
+				},
+				{
+					"name": "resource",
+					"description": "Resource a user is trying to access",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "operation",
+					"description": "Valid operations a user is trying to execute",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns okay if a user can access the resource and execute the desired operations",
+					"return": "string",
+				},
+				{
+					"code": "404",
+					"description": "Users not found"
+				},
+				{
+					"code": "405",
+					"description": "Resource not found"
+				},
+				{
+					"code": "401",
+					"description": "Access unahtorized"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,266 @@
+{
+	"_type": "books",
+	"id": "books",
+	"href": "/library/books",
+	"links": [
+		{
+			"rel": "collection/books",
+			"href": "/library/books"
+		}
+	],
+
+	"operations": [
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/books/{authorId}",
+			"description": "List all the books from an author",
+			"responses": [
+				{
+					"code": "200",
+					"description": "Returns all books from an author in descending order",
+					"return": "book",
+					"link": "/library/definitions/book"
+				},
+				{
+					"code": "404",
+					"description": "No books found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/books/{bookId}",
+			"description": "List information of a book",
+			"parameters": [
+				{
+					"name": "bookId",
+					"description": "Id of a book to list",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a book",
+					"return": "book",
+					"link": "/library/definitions/book"
+				},
+				{
+					"code": "404",
+					"description": "Books not found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/books/findBookByName",
+			"description": "List information of a book",
+			"parameters": [
+				{
+					"name": "bookName",
+					"description": "Name of a book to list",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a book",
+					"return": "book",
+					"link": "/library/definitions/book"
+				},
+				{
+					"code": "404",
+					"description": "Books not found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/books/findBookByAuthorId",
+			"description": "List information of a book",
+			"parameters": [
+				{
+					"name": "authorId",
+					"description": "Id of a author to list a book",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a list of books by this author",
+					"return": "book",
+					"link": "/library/definitions/book"
+				},
+				{
+					"code": "404",
+					"description": "Books not found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/books/findBookByAuthorName",
+			"description": "List information of a book",
+			"parameters": [
+				{
+					"name": "bookName",
+					"description": "Rerturns a list of books by this author name",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a book",
+					"return": "book",
+					"link": "/library/definitions/book"
+				},
+				{
+					"code": "404",
+					"description": "Books not found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/books/ListBookCopies/{bookId}",
+			"description": "List the number of book copies for a book",
+			"parameters": [
+				{
+					"name": "bookId",
+					"description": "Id of a book to list copies",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns the number of copies",
+					"return": "integer"
+				},
+				{
+					"code": "404",
+					"description": "Books not found"
+				}
+			]
+		},
+		{
+			"rel": "POST",
+			"method": "POST",
+			"href": "/library/books",
+			"description": "Add a new book to the library",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "book",
+					"description": "Book object to be added to the library",
+					"required": "true",
+					"type": "object",
+					"link": "/library/definitions/book"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Book added",
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "PUT",
+			"method": "PUT",
+			"href": "/library/books/{bookId}",
+			"description": "Updates information of a book",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "bookId",
+					"description": "Id of a book to update",
+					"required": "true",
+					"type": "integer"
+				},
+				{
+					"name": "bookName",
+					"description": "Name to update for a book",
+					"required": "true",
+					"type": "string"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Book updated",
+				},
+				{
+					"code": "404",
+					"description": "Book not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "DELETE",
+			"method": "DELETE",
+			"href": "/library/books/{bookId}",
+			"description": "Updates information of a book",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "bookId",
+					"description": "Id of a book to delete",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Book deleted",
+				},
+				{
+					"code": "404",
+					"description": "Books not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		}
+	]
+}

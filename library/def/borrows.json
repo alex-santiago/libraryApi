@@ -1,0 +1,166 @@
+{
+	"_type": "borrows",
+	"id": "borrows",
+	"href": "/library/borrows",
+	"links": [
+		{
+			"rel": "collection/borrows",
+			"href": "/library/borrows"
+		}
+	],
+
+	"operations": [
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/borrows/{borrowId}",
+			"description": "List information of a borrow",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "borrowId",
+					"description": "Id of a borrow to list",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns a borrow",
+					"return": "borrow",
+					"link": "/library/definitions/borrow"
+				},
+				{
+					"code": "404",
+					"description": "borrows not found"
+				}
+			]
+		},
+		{
+			"rel": "GET",
+			"method": "GET",
+			"href": "/library/borrows/listUserBorrows/{userId}",
+			"description": "List the number of borrows a user currently have",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "borrowId",
+					"description": "Id of a user to list borrows",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Rerturns information regarding the borrows a user has",
+					"return": "borrow",
+					"link": "/library/definitions/borrow"
+				},
+				{
+					"code": "201",
+					"description": "Rerturns 0 if the user has no borrow",
+					"return": "0"
+				},
+				{
+					"code": "404",
+					"description": "User not found"
+				}
+			]
+		},
+		{
+			"rel": "PUT",
+			"method": "PUT",
+			"href": "/library/borrows",
+			"description": "Update information regarding a borrow",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "borrow",
+					"description": "Borrow object to be updated by the library",
+					"required": "true",
+					"type": "object",
+					"link": "/library/definitions/borrow"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Borrow updated",
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				}
+			]
+		},
+		{
+			"rel": "POST",
+			"method": "POST",
+			"href": "/library/borrows",
+			"description": "Add a new borrow to the User",
+			"parameters": [
+				{
+					"name": "token",
+					"description": "valid login token",
+					"required": "true",
+					"type": "string"
+				},
+				{
+					"name": "userId",
+					"description": "User that is borrowing a book",
+					"required": "true",
+					"type": "integer"
+				},
+				{
+					"name": "bookId",
+					"description": "The book that is being borrowed",
+					"required": "true",
+					"type": "integer"
+				}
+			],
+			"responses": [
+				{
+					"code": "200",
+					"description": "Borrow added",
+				},
+				{
+					"code": "201",
+					"description": "Borrow limit reached",
+				},
+				{
+					"code": "202",
+					"description": "No book copie available to borrow",
+				},
+				{
+					"code": "404",
+					"description": "User not found"
+				},
+				{
+					"code": "405",
+					"description": "Invalid input"
+				},
+				{
+					"code": "406",
+					"description": "Book not found"
+				}				
+			]
+		}
+	]
+}
