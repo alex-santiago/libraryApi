@@ -1,0 +1,26 @@
+{
+	"_id" : "1907523324",
+	"title" : "Study in Scarlet, A",
+	"author" : "Doyle, Arthur Conan",
+	"genre" : "Fiction", 
+	"publication" : {
+		"year" : 2010,
+		"month" : 8,
+		"publisher" : "Aziloth Books"
+	},
+	"copies" : 10,
+	"availability" : 8,
+	"blocked" : 1,
+	"reservations" : [{
+		"_id" : 2,
+		"user" : "Andre Hungaro",
+		"reserve_date" : "2017-07-29",
+		"max_date" : "2017-07-31"
+		}],
+	"borrows" : [{
+		"_id" : 1,
+		"user" : "Alexandre Santiago da Silva",
+		"borrow_date" : "2017-07-15",
+		"due_date" : "2017-07-19"
+		}]
+} 
